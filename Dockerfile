@@ -4,10 +4,16 @@ FROM --platform=linux/amd64 python:3.7
 # Set the working directory inside the container
 WORKDIR /app
 
+# Install LibreOffice and other necessary packages
+RUN apt-get update && \
+    apt-get install -y libreoffice && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Copy the requirements.txt file into the container
 COPY requirements.txt .
 
-# Install dependencies
+# Install Python dependencies
 RUN pip3 install --upgrade pip
 RUN pip3 install --no-cache-dir -r requirements.txt
 

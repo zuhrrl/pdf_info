@@ -2,3 +2,4 @@ fastapi
 pypdfium2
 python-multipart
 uvicorn
+PyPDF2
